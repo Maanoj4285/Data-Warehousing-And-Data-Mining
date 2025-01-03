@@ -1,0 +1,43 @@
+# Given data
+strike_rates <- c(100, 70, 60, 90, 90)
+
+# a) Min-Max Normalization
+min_strike_rate <- min(strike_rates)
+max_strike_rate <- max(strike_rates)
+min_max_normalized <- (strike_rates - min_strike_rate) / (max_strike_rate - min_strike_rate)
+cat("Min-Max Normalization:\n")
+print(min_max_normalized)
+
+# b) Z-Score Normalization
+mean_strike_rate <- mean(strike_rates)
+std_dev_strike_rate <- sd(strike_rates)
+z_score_normalized <- (strike_rates - mean_strike_rate) / std_dev_strike_rate
+cat("\nZ-Score Normalization:\n")
+print(z_score_normalized)
+
+# c) Z-Score Normalization using Mean Absolute Deviation (MAD)
+mad_strike_rate <- mean(abs(strike_rates - mean_strike_rate))
+z_score_mad_normalized <- (strike_rates - mean_strike_rate) / mad_strike_rate
+cat("\nZ-Score Normalization using MAD:\n")
+print(z_score_mad_normalized)
+
+# d) Normalization by Decimal Scaling
+j <- ceiling(log10(max(strike_rates)))
+decimal_scaled <- strike_rates / (10^j)
+cat("\nNormalization by Decimal Scaling:\n")
+print(decimal_scaled)
+
+
+
+Output
+Min-Max Normalization:
+[1] 1.00 0.25 0.00 0.75 0.75
+
+Z-Score Normalization:
+[1]  1.0954451 -0.7302967 -1.3388774  0.4868645  0.4868645
+
+Z-Score Normalization using MAD:
+[1]  1.3235294 -0.8823529 -1.6176471  0.5882353  0.5882353
+
+Normalization by Decimal Scaling:
+[1] 1.0 0.7 0.6 0.9 0.9
