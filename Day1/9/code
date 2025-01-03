@@ -1,0 +1,31 @@
+marks <- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+
+# Equal-frequency (equi-depth) Partitioning
+equal_frequency <- split(marks, cut(rank(marks), breaks = 3))
+
+cat("Equal-frequency Partitioning:\n")
+for (i in seq_along(equal_frequency)) {
+  cat("Bin", i, ":", equal_frequency[[i]], "\n")
+}
+
+# Equal-width Partitioning
+equal_width <- split(marks, cut(marks, breaks = 3))
+
+cat("Equal-width Partitioning:\n")
+for (i in seq_along(equal_width)) {
+  cat("Bin", i, ":", equal_width[[i]], "\n")
+}
+
+# Plot histogram
+hist(marks, breaks = 3, main = "Histogram of Marks (3 Bins)", 
+     xlab = "Marks", col = "lightblue", border = "black")
+
+
+#Output
+
+Bin 1 : 55 55 50 55 58 59 
+Bin 2 : 60 63 65 61 63 65 
+Bin 3 : 71 67 71 72 75 
+Bin 1 : 55 55 50 55 58 
+Bin 2 : 60 63 65 59 61 63 65 
+Bin 3 : 71 67 71 72 75 
