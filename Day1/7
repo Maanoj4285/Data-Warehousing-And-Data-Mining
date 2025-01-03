@@ -1,0 +1,20 @@
+# Data
+pencils <- c(9, 25, 23, 12, 11, 6, 7, 8, 9, 10)
+
+# Mean, Median, Mode
+mean_pencils <- mean(pencils)
+median_pencils <- median(pencils)
+
+# Calculate Mode
+mode_pencils <- as.numeric(names(which.max(table(pencils))))
+
+# Print Results
+cat("Mean of Pencils:", mean_pencils, "\n")
+cat("Median of Pencils:", median_pencils, "\n")
+cat("Mode of Pencils:", mode_pencils, "\n")
+
+
+Output
+Mean of Pencils: 12 
+Median of Pencils: 9.5 
+Mode of Pencils: 9 
