@@ -1,0 +1,67 @@
+# Install and load the arules package (if not already installed)
+install.packages("arules")  # Uncomment if needed
+library(arules)
+
+# Create the dataset (list of transactions)
+transactions <- list(
+  c("Bread", "Cheese", "Egg", "Juice"),
+  c("Bread", "Cheese", "Juice"),
+  c("Bread", "Milk", "Yogurt"),
+  c("Bread", "Juice", "Milk"),
+  c("Cheese", "Juice", "Milk")
+)
+
+# Convert the list to a transaction object
+trans <- as(transactions, "transactions")
+
+# Show the transactions to verify the structure
+inspect(trans)
+
+# Apply the FP-Growth algorithm with specified support and confidence
+rules <- apriori(trans, 
+                 parameter = list(support = 0.5, confidence = 0.75))
+
+# Display the generated rules
+inspect(rules)
+
+
+
+
+
+Output
+items                      
+[1] {Bread, Cheese, Egg, Juice}
+[2] {Bread, Cheese, Juice}     
+[3] {Bread, Milk, Yogurt}      
+[4] {Bread, Juice, Milk}       
+[5] {Cheese, Juice, Milk}      
+
+Apriori
+
+Parameter specification:
+ confidence minval smax arem  aval originalSupport maxtime support minlen maxlen target  ext
+       0.75    0.1    1 none FALSE            TRUE       5     0.5      1     10  rules TRUE
+
+Algorithmic control:
+ filter tree heap memopt load sort verbose
+    0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+
+Absolute minimum support count: 2 
+
+set item appearances ...[0 item(s)] done [0.00s].
+set transactions ...[6 item(s), 5 transaction(s)] done [0.00s].
+sorting and recoding items ... [4 item(s)] done [0.00s].
+creating transaction tree ... done [0.00s].
+checking subsets of size 1 2 done [0.00s].
+writing ... [6 rule(s)] done [0.00s].
+creating S4 object  ... done [0.00s].
+> # Display the generated rules
+> inspect(rules)
+    lhs         rhs      support confidence coverage lift   count
+[1] {}       => {Juice}  0.8     0.80       1.0      1.0000 4    
+[2] {}       => {Bread}  0.8     0.80       1.0      1.0000 4    
+[3] {Cheese} => {Juice}  0.6     1.00       0.6      1.2500 3    
+[4] {Juice}  => {Cheese} 0.6     0.75       0.8      1.2500 3    
+[5] {Juice}  => {Bread}  0.6     0.75       0.8      0.9375 3    
+[6] {Bread}  => {Juice}  0.6     0.75       0.8      0.9375 3    
+> 
