@@ -1,0 +1,37 @@
+# Given marks data
+marks <- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+
+# 1. Equal-Frequency (Equi-Depth) Partitioning
+equi_depth_bins <- cut(marks, breaks = 3, labels = c("Bin 1", "Bin 2", "Bin 3"))
+cat("Equal-Frequency Partitioning:\n")
+table(equi_depth_bins)
+
+# Plot histogram for Equal-Frequency Partitioning
+hist(marks, breaks = 3, main = "Equal-Frequency Partitioning", xlab = "Marks", col = "skyblue", border = "white")
+
+# 2. Equal-Width Partitioning
+min_marks <- min(marks)
+max_marks <- max(marks)
+width <- (max_marks - min_marks) / 3
+equi_width_bins <- cut(marks, breaks = seq(min_marks, max_marks, by = width), labels = c("Bin 1", "Bin 2", "Bin 3"))
+cat("\nEqual-Width Partitioning:\n")
+table(equi_width_bins)
+
+# Plot histogram for Equal-Width Partitioning
+hist(marks, breaks = seq(min_marks, max_marks, by = width), main = "Equal-Width Partitioning", xlab = "Marks", col = "lightgreen", border = "white")
+
+# 3. Clustering (K-means clustering with 3 clusters)
+set.seed(123)  # For reproducibility
+kmeans_result <- kmeans(marks, centers = 3)
+clustering_bins <- factor(kmeans_result$cluster, labels = c("Cluster 1", "Cluster 2", "Cluster 3"))
+cat("\nClustering (K-means) Partitioning:\n")
+table(clustering_bins)
+
+# Plot histogram for Clustering Partitioning
+hist(marks, breaks = 10, main = "Clustering Partitioning (K-means)", xlab = "Marks", col = "lightcoral", border = "white")
+
+
+Output
+Clustering (K-means) Partitioning:
+Cluster 1 Cluster 2 Cluster 3 
+        4         7         6 
