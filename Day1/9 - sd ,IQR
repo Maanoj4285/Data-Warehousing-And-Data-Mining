@@ -1,0 +1,10 @@
+# Data
+speed <- c(78.3, 81.8, 82, 74.2, 83.4, 84.5, 82.9, 77.5, 80.9, 70.6)
+
+# Interquartile Range and Standard Deviation
+iqr_speed <- IQR(speed)
+sd_speed <- sd(speed)
+
+# Print Results
+cat("Interquartile Range of Speed:", iqr_speed, "\n")
+cat("Standard Deviation of Speed:", sd_speed, "\n")
