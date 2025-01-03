@@ -1,0 +1,31 @@
+# Create the data frame
+data <- data.frame(
+  Person = c("Gopu", "Babu", "Baby", "Gopal", "Krishna", "Jai Dev", "Malini", "Hema", "Anu"),
+  Vegetarian = c("yes", "yes", "yes", "no", "yes", "no", "no", "yes", "yes")
+)
+
+# Count the number of vegetarians
+vegetarian_count <- sum(data$Vegetarian == "yes")
+
+# Count the number of non-vegetarians
+non_vegetarian_count <- sum(data$Vegetarian == "no")
+
+# Display the counts
+cat("Total Vegetarians:", vegetarian_count, "\n")
+cat("Total Non-Vegetarians:", non_vegetarian_count, "\n")
+
+# Compare the counts
+if (vegetarian_count > non_vegetarian_count) {
+  cat("The group of vegetarians is greater in number.\n")
+} else if (vegetarian_count < non_vegetarian_count) {
+  cat("The group of non-vegetarians is greater in number.\n")
+} else {
+  cat("Both groups have the same count.\n")
+}
+
+
+
+Output
+Total Vegetarians: 7 
+Total Non-Vegetarians: 3 
+The group of vegetarians is greater in number.
