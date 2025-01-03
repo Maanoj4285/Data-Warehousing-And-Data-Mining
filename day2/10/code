@@ -1,0 +1,15 @@
+# Data
+diabetes <- read_excel("diabetes.xlsx")  # Assuming the file is in the working directory
+
+# Scatter Plot
+plot(diabetes$Age, diabetes$BloodPressure, 
+     main = "Scatter Plot: Blood Pressure vs Age",
+     xlab = "Age", ylab = "Blood Pressure",
+     pch = 16, col = "blue")
+
+# Bar Chart
+age_groups <- cut(diabetes$Age, breaks = seq(0, max(diabetes$Age), by = 10))
+avg_bp <- tapply(diabetes$BloodPressure, age_groups, mean)
+barplot(avg_bp, main = "Bar Chart: Average Blood Pressure by Age Group",
+        xlab = "Age Group", ylab = "Average Blood Pressure",
+        col = "pink", border = "black")
