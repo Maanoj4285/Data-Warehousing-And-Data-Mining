@@ -1,0 +1,22 @@
+# Custom Dataset
+water <- data.frame(
+  hardness = c(50, 70, 80, 100, 120, 150, 180, 200),
+  mortality = c(400, 380, 370, 350, 330, 320, 310, 300)
+)
+
+# Scatter Plot
+plot(water$hardness, water$mortality, main = "Mortality vs Hardness",
+     xlab = "Hardness", ylab = "Mortality", col = "blue", pch = 16)
+
+# Linear Regression Model
+model <- lm(mortality ~ hardness, data = water)
+abline(model, col = "red")
+
+# Prediction
+predicted_mortality <- predict(model, data.frame(hardness = 88))
+cat("Predicted Mortality for Hardness = 88:", predicted_mortality, "\n")
+
+
+
+Output
+Predicted Mortality for Hardness = 88: 364.9316 
