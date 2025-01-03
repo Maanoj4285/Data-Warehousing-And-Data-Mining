@@ -1,0 +1,6 @@
+# Data
+data(AirPassengers)
+hist(AirPassengers, breaks = seq(100, 700, by = 150),
+     main = "Histogram of AirPassengers Dataset",
+     xlab = "Number of Passengers",
+     col = "lightblue", border = "black")
