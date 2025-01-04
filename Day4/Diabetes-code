@@ -1,0 +1,76 @@
+# Load necessary libraries
+library(ggplot2)
+library(readxl)
+
+# Load the dataset
+diabetes_data <- read_excel("diabetes.xlsx")
+# Simple linear regression: Outcome ~ Age
+linear_model <- lm(Outcome ~ Age, data = diabetes_data)
+
+# Summary of the model
+summary(linear_model)
+
+# Plot the data and the linear regression line
+ggplot(diabetes_data, aes(x = Age, y = Outcome)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "blue") +
+  labs(title = "Diabetes Trend by Age (Linear Regression)", x = "Age", y = "Diabetes (0 = No, 1 = Yes)") +
+  theme_minimal()
+# Multiple linear regression: Outcome ~ Age + BMI + Glucose + BloodPressure + Insulin + etc.
+multiple_model <- lm(Outcome ~ Age + BMI + Glucose + BloodPressure +  DiabetesPedigreeFunction, data = diabetes_data)
+
+# Summary of the model
+summary(multiple_model)
+
+# Visualize the relationship between Age and BMI (as an example)
+ggplot(diabetes_data, aes(x = Age, y = BMI)) +
+  geom_point() +
+  geom_smooth(method = "lm", col = "red") +
+  labs(title = "Effect of Age and BMI on Diabetes", x = "Age", y = "BMI") +
+  theme_minimal()
+# Residuals plot for multiple regression model
+plot(multiple_model$residuals, main = "Residuals of Multiple Regression Model", ylab = "Residuals", xlab = "Fitted values")
+
+# Q-Q plot for multiple regression residuals
+qqnorm(multiple_model$residuals)
+qqline(multiple_model$residuals, col = "red")
+
+
+
+
+Output
+Call:
+lm(formula = Outcome ~ Age, data = diabetes_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.63598 -0.25418 -0.03138  0.23326  0.69874 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept) -0.41004    0.57482  -0.713    0.502
+Age          0.02092    0.01263   1.656    0.149
+
+Residual standard error: 0.4783 on 6 degrees of freedom
+Multiple R-squared:  0.3138,	Adjusted R-squared:  0.1994 
+F-statistic: 2.744 on 1 and 6 DF,  p-value: 0.1487
+Call:
+lm(formula = Outcome ~ Age + BMI + Glucose + BloodPressure + 
+    DiabetesPedigreeFunction, data = diabetes_data)
+
+Residuals:
+         1          2          3          4          5          6          7          8 
+-0.3625801  0.2230432  0.1632372 -0.3169181  0.2712363  0.0005856  0.2140853 -0.1926894 
+
+Coefficients:
+                           Estimate Std. Error t value Pr(>|t|)
+(Intercept)              -11.169546   8.327370  -1.341    0.312
+Age                       -0.057140   0.047496  -1.203    0.352
+BMI                        0.033043   0.097750   0.338    0.768
+Glucose                    0.002083   0.033526   0.062    0.956
+BloodPressure              0.152619   0.151002   1.011    0.419
+DiabetesPedigreeFunction  -0.436325   1.093343  -0.399    0.728
+
+Residual standard error: 0.4821 on 2 degrees of freedom
+Multiple R-squared:  0.7676,	Adjusted R-squared:  0.1866 
+F-statistic: 1.321 on 5 and 2 DF,  p-value: 0.4838
