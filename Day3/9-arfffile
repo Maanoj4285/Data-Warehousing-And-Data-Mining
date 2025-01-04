@@ -1,0 +1,66 @@
+@relation decision_tree
+
+@attribute Height numeric
+@attribute Weight numeric
+@attribute Gender {Male, Female}
+
+@data
+190,85,Male
+175,90,Male
+165,70,Female
+185,75,Male
+170,65,Female
+160,80,Female
+
+
+Output
+=== Run information ===
+
+Scheme:       weka.classifiers.trees.J48 -C 0.25 -M 2
+Relation:     decision_tree
+Instances:    6
+Attributes:   3
+              Height
+              Weight
+              Gender
+Test mode:    5-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+J48 pruned tree
+------------------
+
+Height <= 170: Female (3.0)
+Height > 170: Male (3.0)
+
+Number of Leaves  : 	2
+
+Size of the tree : 	3
+
+
+Time taken to build model: 0 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances           5               83.3333 %
+Incorrectly Classified Instances         1               16.6667 %
+Kappa statistic                          0.6667
+Mean absolute error                      0.1667
+Root mean squared error                  0.4082
+Relative absolute error                 30.4348 %
+Root relative squared error             74.4092 %
+Total Number of Instances                6     
+
+=== Detailed Accuracy By Class ===
+
+                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
+                 1.000    0.333    0.750      1.000    0.857      0.707    0.833     0.750     Male
+                 0.667    0.000    1.000      0.667    0.800      0.707    0.833     0.833     Female
+Weighted Avg.    0.833    0.167    0.875      0.833    0.829      0.707    0.833     0.792     
+
+=== Confusion Matrix ===
+
+ a b   <-- classified as
+ 3 0 | a = Male
+ 1 2 | b = Female
