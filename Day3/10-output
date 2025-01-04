@@ -1,0 +1,34 @@
+Apriori
+=======
+
+Minimum support: 0.55 (3 instances)
+Minimum metric <confidence>: 0.5
+Number of cycles performed: 9
+
+Generated sets of large itemsets:
+
+Size of set of large itemsets L(1): 7
+
+Size of set of large itemsets L(2): 8
+
+Size of set of large itemsets L(3): 2
+
+Best rules found:
+
+ 1. SONY=false 3 ==> BPL=true 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+ 2. SONY=false 3 ==> LG=false 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+ 3. ONIDA=false 3 ==> BPL=true 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+ 4. ONIDA=true 3 ==> LG=false 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+ 5. ONIDA=true 3 ==> SAMSUNG=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 6. SONY=false LG=false 3 ==> BPL=true 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+ 7. SONY=false BPL=true 3 ==> LG=false 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+ 8. SONY=false 3 ==> BPL=true LG=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+ 9. SAMSUNG=false ONIDA=true 3 ==> LG=false 3    <conf:(1)> lift:(1.2) lev:(0.08) [0] conv:(0.5)
+10. LG=false ONIDA=true 3 ==> SAMSUNG=false 3    <conf:(1)> lift:(1.5) lev:(0.17) [1] conv:(1)
+
+
+
+FPGrowth found 2 rules (displaying top 2)
+
+1. [SONY=false]: 3 ==> [LG=false]: 3   <conf:(1)> lift:(1.2) lev:(0.08) conv:(0.5) 
+2. [SAMSUNG=false, SONY=false]: 2 ==> [LG=false]: 2   <conf:(1)> lift:(1.2) lev:(0.06) conv:(0.33) 
